@@ -11,14 +11,14 @@ virtualenv .env -p python3
 "$PIP" install -r requirements.txt
 
 # Extract files
-unzip -o -d data/ data/audio_train.zip
-unzip -o -d data/ data/audio_test.zip
+# unzip -o -d data/ data/audio_train.zip
+# unzip -o -d data/ data/audio_test.zip
 
 # Trim leading and trailing silence
-"$PYTHON" 01-save-trimmed-wavs.py
+"$PYTHON" 01-save-trimmed-wavs.py 12
 
 # Compute Log Mel-Spectrograms
-"$PYTHON" 02-compute-mel-specs.py
+"$PYTHON" 02-compute-mel-specs.py 12
 
 # Compute summary metrics of various spectral and time based features
 "$PYTHON" 03-compute-summary-feats.py
